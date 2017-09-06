@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    
+    
+    <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" th:src="@{/js/groups.js}" src="../../js/groups.js" ></script>
+   	<script type="text/javascript" th:src="@{/js/main.js}" src="../../js/main.js" ></script>
+
+    
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://right-road.com/">Right-Road.com</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container ">
+	<div class="liniya" >
+    	<a href="/" ><h5>Главная</h5></a>
+   	</div>
+   	<div class="liniya" >
+   		<a href="/groups" ><h5>Группы</h5></a> 
+   	</div>
+   	<div class="liniya" >
+   		<a href="/courses" ><h5>Курсы</h5></a> 
+   	</div>
+</div>
+
+<div class="container">
+	<h1>Группы которые есть у нас</h1>      
+    <div id="postdiv">
+
+
+		<ul id="sortable">
+			<p th:each="emp  : ${groups}">
+			<li class="ui-state-default"><a th:href="@{'/groups/'+${emp[1]}}"><h1 th:text="${emp[1]}"></h1></a></li>
+			</p>
+		</ul>
+    </div>    
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>  
+ 
+ <div class="container">
+	<h1>Добавить группу</h1>      
+    <div id="postdiv">
+        <form id="groupsForm">
+            <label>Название группы</label>
+            <input type="text" id="groupName" class="form-control"/>
+            
+		<fieldset>
+	    <label for="speed">курс: </label>
+	    <select name="speed" id="courses">
+	    	<option value="0" selected="selected">список</option>
+	    	<p th:each="emp  : ${courses}">
+			<option th:value="${emp[0]}" ><h1 th:text="${emp[1]}"></h1></option>
+			</p>
+	    </select>
+	    
+	    <br/>
+	    <label for="speed">специальность: </label>
+	    <select name="speed" id="specialty">
+	    	<option value="0" selected="selected">список</option>
+	    	<p th:each="emp  : ${specialty}">
+			<option th:value="${emp[0]}" ><h1 th:text="${emp[1]}"></h1></option>
+			</p>
+	    </select>
+	    <br/>
+	    </fieldset>
+            
+            
+            <br/> 
+            <button type="submit" id="postBtn" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>    
+</div>
+   	
+<br/>
+<br/>
+<br/>
+<br/>  	
+   	
+<div class="container">
+    <footer>
+        <p>
+            © <a href="http://right-road.com/">Right-Road.com</a> 2017
+        </p>
+    </footer>
+</div>
+   	
+
+</body>
+</html>    

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    
+    <script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" th:src="@{/js/postcourses.js}" src="../../js/postcourses.js" ></script>
+   	<script type="text/javascript" th:src="@{/js/main.js}" src="../../js/main.js" ></script>
+
+    
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://right-road.com/">Right-Road.com</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container ">
+	<div class="liniya" >
+    	<a href="/" ><h5>Главная</h5></a>
+   	</div>
+   	<div class="liniya" >
+   		<a href="/groups" ><h5>Группы</h5></a> 
+   	</div>
+   	<div class="liniya" >
+   		<a href="/courses" ><h5>Курсы</h5></a> 
+   	</div>
+</div>
+
+<div class="container">
+	<h1>Курсы которые есть у нас</h1>
+    
+	<ul id="sortable">
+		<p th:each="emp  : ${courses}">
+		<li class="ui-state-default"><h1 th:text="${emp[1]}"></h1></li>
+		</p>
+	</ul>
+</div>
+
+<br/>
+ 
+ 
+ <div class="container">
+	<h1>Добавить курс</h1>      
+    <div id="postdiv">
+        <form id="coursesForm">
+            <label>Название курса</label>
+            <input type="text" id="coursesName" class="form-control"/>
+            <br/> 
+            <button type="submit" id="postBtn" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>    
+</div>
+   	
+<br/>
+<br/>
+<br/>
+<br/>  	
+   	
+<div class="container">
+    <footer>
+        <p>
+            © <a href="http://right-road.com/">Right-Road.com</a> 2017
+        </p>
+    </footer>
+</div>
+   	
+
+</body>
+</html>

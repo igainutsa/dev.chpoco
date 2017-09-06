@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" href="../../webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    
+
+    <script type="text/javascript" th:src="@{/webjars/jquery/2.2.4/jquery.min.js}" src="../../webjars/jquery/2.2.4/jquery.min.js" ></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" th:src="@{/js/edit.js}" src="../../js/edit.js" ></script>
+   	<script type="text/javascript" th:src="@{/js/main.js}" src="../../js/main.js" ></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://right-road.com/">Right-Road.com</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container ">
+	<div class="liniya" >
+    	<a href="/" ><h5>Главная</h5></a>
+   	</div>
+   	<div class="liniya" >
+   		<a href="/groups" ><h5>Группы</h5></a> 
+   	</div>
+   	<div class="liniya" >
+   		<a href="/courses" ><h5>Курсы</h5></a> 
+   	</div>
+</div>
+
+<div class="container">
+	<h1 th:text="'Редактировать студента #' + ${id} + '' " ></h1>      
+    <div id="postdiv">
+        <form id="userForm">
+            <label>Имя</label>
+            <input type="text" id="userName" th:value="${userInfo[1]}" class="form-control"/>
+            <label>Фамилия</label>
+            <input type="text" id="userSurname" th:value="${userInfo[2]}"  class="form-control"/>
+            <input type="hidden" id="idUser" th:value="${id}" />            
+            <fieldset>
+	            <label for="groups">Группы: </label>
+				    <select name="groups" id="groups">
+				    	<p th:each="emp  : ${groups}">		
+							<option th:value="${emp[0]}" th:if="${userInfo[3]} == ${emp[1]}" selected="selected" ><h1 th:text="${emp[1]}"></h1></option>
+							<option th:value="${emp[0]}" th:if="${userInfo[3]} != ${emp[1]}" ><h1 th:text="${emp[1]}"></h1></option>
+						</p>
+			    </select> 
+           		<br/>
+			    <label for="speed">курс: </label>
+			    <select name="speed" id="courses">
+			    	<p th:each="emp  : ${courses}">
+						<option th:value="${emp[0]}" th:if="${userInfo[4]} == ${emp[1]}" selected="selected" ><h1 th:text="${emp[1]}"></h1></option>
+						<option th:value="${emp[0]}" th:if="${userInfo[4]} != ${emp[1]}"  ><h1 th:text="${emp[1]}"></h1></option>
+					</p>
+			    </select>
+			    <br/>
+			    <label for="specialty">специальность: </label>
+			    <select name="specialty" id="specialty">
+			    	<p th:each="emp  : ${specialty}">
+						<option th:value="${emp[0]}" th:if="${userInfo[5]} == ${emp[1]}" selected="selected" ><h1 th:text="${emp[1]}"></h1></option>
+						<option th:value="${emp[0]}" th:if="${userInfo[5]} != ${emp[1]}" ><h1 th:text="${emp[1]}"></h1></option>
+					</p>
+			    </select>
+			    <br/>
+		    </fieldset>           
+            <br/> 
+            <button type="submit" id="postBtn" class="btn btn-primary">Редоктировать</button>
+        </form>
+    </div>    
+</div>
+
+<br/>
+<br/>  	
+   	
+<div class="container">
+    <footer>
+        <p>
+            © <a href="http://right-road.com/">Right-Road.com</a> 2017
+        </p>
+    </footer>
+</div>
+   	
+
+</body>
+</html>    

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" href="../../webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    
+
+    <script type="text/javascript" th:src="@{/webjars/jquery/2.2.4/jquery.min.js}" src="../../webjars/jquery/2.2.4/jquery.min.js" ></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" th:src="@{/js/groupsId.js}" src="../../js/groupsId.js" ></script>
+   	<script type="text/javascript" th:src="@{/js/main.js}" src="../../js/main.js" ></script>
+
+
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://right-road.com/">Right-Road.com</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container ">
+	<div class="liniya" >
+    	<a href="/" ><h5>Главная</h5></a>
+   	</div>
+   	<div class="liniya" >
+   		<a href="/groups" ><h5>Группы</h5></a> 
+   	</div>
+   	<div class="liniya" >
+   		<a href="/courses" ><h5>Курсы</h5></a> 
+   	</div>
+</div>
+
+<div class="container">
+  <h1 th:text="'Группа:  ' + ${id} + '!' " ></h1>
+  <table class="table">
+    <thead>
+      <tr>
+	      <th>Имя</th>
+	      <th>Фамилия</th>
+	      <th>Группа</th>
+	      <th>Курс</th>
+	      <th>Специальность</th>
+	      <th>Редактировать</th>
+	      <th>Удалить</th>
+      </tr>
+    </thead>
+    <tbody>
+		<tr th:each="emp  : ${user}" >
+			<td><h1 th:text="${emp[1]}"></h1></td>
+			<td><h1 th:text="${emp[2]}"></h1></td>
+			<td><h1 th:text="${emp[3]}"></h1></td>
+			<td><h1 id="nameCourses" th:text="${emp[4]}"></h1></td>
+			<td><h1 id="nameSpecialty" th:text="${emp[5]}"></h1></td>
+			<td><button type="button" class="btn-info editUser" th:value="${emp[0]}" >Редактировать</button></td>
+			<td><button type="button" class="btn-danger delete" th:value="${emp[0]}" >Удалить</button></td>
+		</tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>  
+ 
+ <div class="container">
+	<h1>Добавить студента</h1>      
+    <div id="postdiv">
+        <form id="userForm">
+            <label>Имя</label>
+            <input type="text" id="userName" class="form-control"/>
+            <label>Фамилия</label>
+            <input type="text" id="userSurname" class="form-control"/>
+            <input type="hidden" id="idGroup" th:value="${idGroup}" />
+            <input type="hidden" id="nameGroup" th:value="${id}" />             
+            <br/> 
+            <button type="submit" id="postBtn" class="btn btn-primary">Добавить</button>
+        </form>
+    </div>    
+</div>
+   	
+<br/>
+<br/>
+<br/>
+<br/>  	
+   	
+<div class="container">
+    <footer>
+        <p>
+            © <a href="http://right-road.com/">Right-Road.com</a> 2017
+        </p>
+    </footer>
+</div>
+   	
+
+</body>
+</html>    
